@@ -1,12 +1,12 @@
 {
-    "name": "getir-hackaton",
-    "description": "Getir hackaton 2018 Backend Task.",
-    "repository": "https://github.com/cagataycali/getir-hackaton",
+    "name": "getir-hackathon",
+    "description": "Getir hackathon 2018 Backend Task.",
+    "repository": "https://github.com/cagataycali/getir-hackathon",
     "logo": "https://pbs.twimg.com/profile_images/842289357113438208/WMUd9Sbj_400x400.jpg",
     "keywords": [
         "getir",
         "bitaksi",
-        "hackaton"
+        "hackathon"
     ],
     "website": "https://cagatay.me",
     "addons": [

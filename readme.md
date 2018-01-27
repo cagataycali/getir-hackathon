@@ -11,7 +11,7 @@ http://hackathon.getir.com/
 
 *Deploy on your own*
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cagataycali/getir-hackaton)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cagataycali/getir-hackathon)
 
 > *When the first deploy,* the mock data generator works **that's the reason** first deploy may take time.
 
