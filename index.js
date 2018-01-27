@@ -23,17 +23,18 @@ app.post('/searchRecord', async ({ body: { startDate, endDate, minCount, maxCoun
         $lte: maxCount
       }
     }, {})
-
-    const records = responseBody.map(piece => {
-      return {
-        key: piece.key,
-        createdAt: piece.createdAt,
-        totalCount: piece.totalCount
-      }
-    })
+    console.log(responseBody)
+    // const records = responseBody.map(piece => {
+    //   return {
+    //     key: piece.key,
+    //     createdAt: piece.createdAt,
+    //     totalCount: piece.totalCount
+    //   }
+    // })
     response = {code: 0, msg: 'Success', records}
     res.status(200)
   } catch (e) {
+    console.log(e)
     response = {code: -1, msg: 'Missing params (startDate, endDate, minCount, maxCount)'}
     res.status(422) // https://tools.ietf.org/html/rfc4918#page-78
   } finally {

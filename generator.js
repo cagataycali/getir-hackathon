@@ -34,4 +34,4 @@ const generateMockData = async day => {
   }
 }
 
-process.env.NODE_ENV === 'production' ? generateMockData(day) : mongoose.connection.close()
+// process.env.NODE_ENV === 'production' ? generateMockData(day) : mongoose.connection.close()
