@@ -1,0 +1,24 @@
+{
+  "name": "getir-hackaton",
+  "version": "1.0.0",
+  "description": "2018 Getir hackaton - backend task",
+  "main": "index.js",
+  "repository": "git@github.com:cagataycali/getir-hackaton.git",
+  "author": "Çağatay Çalı",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "node generator.js",
+    "test": "standart && jest"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hashids": "^1.1.4",
+    "mongoose": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^22.1.4",
+    "standard": "^10.0.3"
+  }
+}
