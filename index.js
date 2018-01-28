@@ -1,7 +1,8 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
-const { Record } = require('./db')
+const Record = require('./db')
+const query = require('./lib/query')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -10,27 +11,10 @@ app.use(bodyParser.urlencoded({
 
 app.get('*', (_, res) => res.status(405).json({'code': 'MethodNotAllowedError', 'message': 'GET is not allowed'})) // 405 Method Not Allowed
 
-app.post('/searchRecord', async ({ body: { startDate, endDate, minCount, maxCount } }, res) => {
+app.post('/searchRecord', async (req, res) => {
   let response
   try {
-    const responseBody = await Record.find({
-      createdAt: {
-        $gte: startDate,
-        $lte: endDate
-      },
-      totalCount: {
-        $gte: minCount,
-        $lte: maxCount
-      }
-    }, {})
-    console.log(responseBody)
-    // const records = responseBody.map(piece => {
-    //   return {
-    //     key: piece.key,
-    //     createdAt: piece.createdAt,
-    //     totalCount: piece.totalCount
-    //   }
-    // })
+    const records = await Record.aggregate(query(req.body))
     response = {code: 0, msg: 'Success', records}
     res.status(200)
   } catch (e) {
