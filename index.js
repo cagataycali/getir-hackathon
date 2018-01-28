@@ -1,7 +1,7 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
-const Record = require('./db')
+const {Record} = require('./db')
 const query = require('./lib/query')
 
 app.use(bodyParser.json())

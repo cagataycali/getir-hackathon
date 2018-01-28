@@ -8,4 +8,4 @@ mongoose.connect(MONGODB_URI, { promiseLibrary: global.Promise })
 
 const Record = mongoose.model('records', Schema)
 
-module.exports = Record
+module.exports = {Record, mongoose}

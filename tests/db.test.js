@@ -1,35 +1,41 @@
 /* eslint-disable */
 
-const { Record } = require('../db')
+const {Record, mongoose} = require('../db')
 
-const caseOne = async () => {
-  const startDate = new Date()
-  startDate.setFullYear(startDate.getFullYear() - 1)
-  const endDate = new Date()
-
-  let response
-  try {
-    response = await Record.find({
-      createdAt: {
-        $gte: startDate,
-        $lte: endDate
-      },
-      totalCount: {
-        $gte: 2000,
-        $lte: 3000
-      }
-    }, {})
-  } catch (e) {
-    response = {error: e}
-  }
-  return response
-}
+jest.setTimeout(10000)
 
 test('Yearly query result lenght must bigger than 0', async () => {
   expect.assertions(1)
   try {
-    let data = await caseOne()
+    let data = await Record.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gt: new Date('2016-01-26'),
+            $lt: new Date('2017-04-26')
+          }
+        }
+      },
+      {
+        $project: {
+          key: 1,
+          _id: 0,
+          createdAt: 1,
+          totalCount: {
+            $sum: '$counts'
+          }
+        }
+      }, {
+        $match: {
+          totalCount: {
+            $gt: 2700,
+            $lt: 3000
+          }
+        }
+      }
+    ])
     expect(data.lenght).not.toBe(0)
+    mongoose.connection.close()
   } catch (e) {
     console.log(e)
   }
