@@ -8,8 +8,5 @@
         "bitaksi",
         "hackathon"
     ],
-    "website": "https://cagatay.me",
-    "addons": [
-        "mongolab"
-    ]
+    "website": "https://cagatay.me"
 }
